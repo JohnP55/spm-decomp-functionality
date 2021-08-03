@@ -19,6 +19,8 @@ ifeq ($(VERSION),)
 all:
 	@$(MAKE) --no-print-directory VERSION=us0
 
+us0: all
+
 clean:
 	@$(MAKE) --no-print-directory clean_target VERSION=us0
 	@$(MAKE) --no-print-directory clean_target VERSION=us1
