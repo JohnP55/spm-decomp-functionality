@@ -6,4 +6,4 @@ The goal of this decomp is to make SPM modding easier by effectively dealing wit
 To build this, download the SPM REL Loader and extract this repo in `spm-rel-loader\rel`, then build using the command `make us0`. This should produce a file named `spm.us0.rel`. Then, follow the instructions of the REL Loader.
 
 ## Credits
-Credits to Seeky for making the SPM REL Loader, and teaching me a lot of this stuff.
+Credits to PistonMiner, Zephiles and Seeky for making the SPM REL Loader, and Seeky for teaching me a lot of this stuff.
