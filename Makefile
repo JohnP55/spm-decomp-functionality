@@ -16,23 +16,8 @@ include $(DEVKITPPC)/wii_rules
 export ELF2REL	:=	$(TTYDTOOLS)/bin/elf2rel
 
 ifeq ($(VERSION),)
-all: us0 us1 us2 jp0 jp1 eu0 eu1 kr0
-us0:
+all:
 	@$(MAKE) --no-print-directory VERSION=us0
-us1:
-	@$(MAKE) --no-print-directory VERSION=us1
-us2:
-	@$(MAKE) --no-print-directory VERSION=us2
-jp0:
-	@$(MAKE) --no-print-directory VERSION=jp0
-jp1:
-	@$(MAKE) --no-print-directory VERSION=jp1
-eu0:
-	@$(MAKE) --no-print-directory VERSION=eu0
-eu1:
-	@$(MAKE) --no-print-directory VERSION=eu1
-kr0:
-	@$(MAKE) --no-print-directory VERSION=kr0
 
 clean:
 	@$(MAKE) --no-print-directory clean_target VERSION=us0
@@ -44,7 +29,7 @@ clean:
 	@$(MAKE) --no-print-directory clean_target VERSION=eu1
 	@$(MAKE) --no-print-directory clean_target VERSION=kr0
 
-.PHONY: all clean us0 us1 us2 jp0 jp1 eu0 eu1 kr0
+.PHONY: all clean us0
 else
 
 #---------------------------------------------------------------------------------
@@ -65,44 +50,13 @@ INCLUDES	:=	include
 
 MACHDEP		= -mno-sdata -mgcn -DGEKKO -mcpu=750 -meabi -mhard-float
 
-CFLAGS		= -nostdlib -ffreestanding -ffunction-sections -fdata-sections -g -O3 -Wall $(MACHDEP) $(INCLUDE)
+CFLAGS		= -nostdlib -ffreestanding -ffunction-sections -fdata-sections -g -O3 -Wall -DSPM_US0 $(MACHDEP) $(INCLUDE)
 CXXFLAGS	= -fno-exceptions -fno-rtti -std=gnu++17 $(CFLAGS)
 
 LDFLAGS		= -r -e _prolog -u _prolog -u _epilog -u _unresolved -Wl,--gc-sections -nostdlib -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
 # Platform options
-ifeq ($(VERSION),us0)
-	CFLAGS += -DSPM_US0
-	GAMECODE = "R8PE"
-else ifeq ($(VERSION),us1)
-	CFLAGS += -DSPM_US1
-	GAMECODE = "R8PE"
-else ifeq ($(VERSION),us2)
-	CFLAGS += -DSPM_US2
-	GAMECODE = "R8PE"
-else ifeq ($(VERSION),jp0)
-	CFLAGS += -DSPM_JP0
-	GAMECODE = "R8PJ"
-else ifeq ($(VERSION),jp1)
-	CFLAGS += -DSPM_JP1
-	GAMECODE = "R8PJ"
-else ifeq ($(VERSION),eu0)
-	CFLAGS += -DSPM_EU0
-	GAMECODE = "R8PP"
-else ifeq ($(VERSION),eu1)
-	CFLAGS += -DSPM_EU1
-	GAMECODE = "R8PP"
-else ifeq ($(VERSION),kr0)
-	CFLAGS += -DSPM_KR0
-	GAMECODE = "R8PK"
-endif
-
-# PAL revision 1's dol is identical to revision 0, so no need for another lst
-ifeq ($(VERSION),eu1)
-	LST = eu0
-else
-	LST = $(VERSION)
-endif
+GAMECODE = "R8PE"
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
@@ -155,7 +109,7 @@ export HFILES := $(addsuffix .h,$(subst .,_,$(BINFILES)))
 
 # For REL linking
 export LDFILES		:= $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.ld)))
-export MAPFILE		:= $(CURDIR)/include/spm.$(LST).lst
+export MAPFILE		:= $(CURDIR)/include/spm.us0.lst
 
 #---------------------------------------------------------------------------------
 # build a list of include paths
