@@ -18,6 +18,8 @@
 
 #define MAX_ATTACK 99
 
+#define FLIP_TIMER_MAX 10
+
 namespace spm::mario_pouch {
 
 	struct PouchCharOrPixlInfo
@@ -79,12 +81,14 @@ namespace spm::mario_pouch {
 	void pouchAddCoin(s32 coinsToAdd);
 	void pouchSetAttack(s32 targetAttack);
 	void pouchAddAttack(s32 attackToAdd);
+	void pouchSetHp(s32 targetHp);
+	void pouchAddHp(s32 hpToAdd);
 	
 	extern "C" {
 		extern MarioPouchWork marioPouchWork;
 
 		extern s32 pouchGetHp();
-		extern void pouchAddHp(s32 increase);
+		
 		extern s32 pouchGetXp();
 		extern void pouchAddXp(s32 increase);
 
@@ -105,8 +109,8 @@ namespace spm::mario_pouch {
 		extern void pouchAddCoin_o(s32 coinsToAdd);
 		extern void pouchSetAttack_o(s32 targetAttack);
 		extern void pouchAddAttack_o(s32 attackToAdd);
-
+		extern void pouchSetHp_o(s32 targetHp);
+		extern void pouchAddHp_o(s32 hpToAdd);
 	}
-
 }
 

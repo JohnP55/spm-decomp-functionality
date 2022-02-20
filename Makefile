@@ -23,13 +23,13 @@ us0: all
 
 clean:
 	@$(MAKE) --no-print-directory clean_target VERSION=us0
-	@$(MAKE) --no-print-directory clean_target VERSION=us1
-	@$(MAKE) --no-print-directory clean_target VERSION=us2
-	@$(MAKE) --no-print-directory clean_target VERSION=jp0
-	@$(MAKE) --no-print-directory clean_target VERSION=jp1
-	@$(MAKE) --no-print-directory clean_target VERSION=eu0
-	@$(MAKE) --no-print-directory clean_target VERSION=eu1
-	@$(MAKE) --no-print-directory clean_target VERSION=kr0
+	# @$(MAKE) --no-print-directory clean_target VERSION=us1
+	# @$(MAKE) --no-print-directory clean_target VERSION=us2
+	# @$(MAKE) --no-print-directory clean_target VERSION=jp0
+	# @$(MAKE) --no-print-directory clean_target VERSION=jp1
+	# @$(MAKE) --no-print-directory clean_target VERSION=eu0
+	# @$(MAKE) --no-print-directory clean_target VERSION=eu1
+	# @$(MAKE) --no-print-directory clean_target VERSION=kr0
 
 .PHONY: all clean us0
 else

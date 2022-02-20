@@ -3,15 +3,19 @@
 #include <types.h>
 
 namespace spm::system {
-
-double compAngle(double angle1, double angle2);
-double d_abs(double d);
+	
+float f_abs(float i);
 s32 i_abs(s32 i);
+
+const char* getSpmarioDVDRoot();
 
 s32 rand();
 s32 _rand(s32 maxValue);
 s32 irand(s32 maxValue);
-double frand(double maxValue);
+float frand(float maxValue);
+float compAngle(float angle1, float angle2);
+float distABf(float x1, float y1, float x2, float y2);
+float reviseAngle(float angle);
 
 extern "C" {
 
@@ -23,10 +27,15 @@ extern "C" {
 
 s32 __assert2(const char * filename, s32 line, const char * assertion, const char * message,...);
 
+extern const char* getSpmarioDVDRoot_o();
+
 extern s32 rand_o();
 extern s32 irand_o(s32 maxValue);
-extern double frand_o(double maxValue);
-extern double compAngle_o(double angle1, double angle2);
+extern float frand_o(float maxValue);
+extern float compAngle_o(float angle1, float angle2);
+extern float distABf_o(float x1, float y1, float x2, float y2);
+extern float reviseAngle_o(float angle);
+extern void sysWaitDrawSync();
 
 extern u32 RNG_SEED;
 }

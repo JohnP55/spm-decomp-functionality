@@ -1,6 +1,7 @@
 #pragma once
 
-#include <cstdint>
+#include <stdint.h>
+#include <stddef.h>
 
 typedef uint64_t u64;
 typedef uint32_t u32;
@@ -12,7 +13,9 @@ typedef int32_t s32;
 typedef int16_t s16;
 typedef int8_t  s8;
 
-typedef uint32_t size_t;
+//typedef uint32_t size_t;
 
 typedef float f32;
 typedef double f64;
+
+typedef unsigned char BOOL;

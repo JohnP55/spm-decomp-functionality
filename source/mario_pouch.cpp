@@ -1,62 +1,82 @@
 #include "spm/mario_pouch.h"
 #include <wii/types.h>
 
-namespace spm::mario_pouch
+namespace spm::mario_pouch {
+
+MarioPouchWork* pouchGetPtr()
 {
-	MarioPouchWork* pouchGetPtr()
+	return &marioPouchWork;
+}
+
+s32 pouchGetTotalCoinsCollected()
+{
+	return marioPouchWork.totalCoinsCollected;
+}
+
+void pouchSetCoin(s32 targetCoins)
+{
+	marioPouchWork.coins = targetCoins;
+	
+	if (marioPouchWork.coins > COIN_MAX) marioPouchWork.coins = COIN_MAX;
+	if (marioPouchWork.coins < COIN_MIN) marioPouchWork.coins = COIN_MIN;
+	
+	return;
+}
+
+void pouchAddCoin(s32 coinsToAdd)
+{
+	marioPouchWork.coins += coinsToAdd;
+	
+	if (marioPouchWork.coins > COIN_MAX) marioPouchWork.coins = COIN_MAX;
+	if (marioPouchWork.coins < COIN_MIN) marioPouchWork.coins = COIN_MIN;
+	
+	if (coinsToAdd > 0)
 	{
-		return &marioPouchWork;
+		marioPouchWork.totalCoinsCollected += coinsToAdd;
+		if (marioPouchWork.totalCoinsCollected > TOTAL_COIN_MAX) marioPouchWork.totalCoinsCollected = TOTAL_COIN_MAX;
 	}
 	
-	s32 pouchGetTotalCoinsCollected()
-	{
-		return marioPouchWork.totalCoinsCollected;
-	}
+	return;
+}
+
+void pouchSetAttack(s32 targetAttack)
+{
+	marioPouchWork.attack = targetAttack;
 	
-	void pouchSetCoin(s32 targetCoins)
-	{
-		marioPouchWork.coins = targetCoins;
-		
-		if (marioPouchWork.coins > COIN_MAX) marioPouchWork.coins = COIN_MAX;
-		if (marioPouchWork.coins < COIN_MIN) marioPouchWork.coins = COIN_MIN;
-		
-		return;
-	}
+	if (targetAttack > MAX_ATTACK) marioPouchWork.attack = MAX_ATTACK;
+	if (marioPouchWork.attack <= 0) marioPouchWork.attack = 1;
 	
-	void pouchAddCoin(s32 coinsToAdd)
-	{
-		marioPouchWork.coins += coinsToAdd;
-		
-		if (marioPouchWork.coins > COIN_MAX) marioPouchWork.coins = COIN_MAX;
-		if (marioPouchWork.coins < COIN_MIN) marioPouchWork.coins = COIN_MIN;
-		
-		if (coinsToAdd > 0)
-		{
-			marioPouchWork.totalCoinsCollected += coinsToAdd;
-			if (marioPouchWork.totalCoinsCollected > TOTAL_COIN_MAX) marioPouchWork.totalCoinsCollected = TOTAL_COIN_MAX;
-		}
-		
-		return;
-	}
+	return;
+}
+
+void pouchAddAttack(s32 attackToAdd)
+{
+	marioPouchWork.attack += attackToAdd;
 	
-	void pouchSetAttack(s32 targetAttack)
-	{
-		marioPouchWork.attack = targetAttack;
-		
-		if (targetAttack > MAX_ATTACK) marioPouchWork.attack = MAX_ATTACK;
-		if (marioPouchWork.attack <= 0) marioPouchWork.attack = 1;
-		
-		return;
-	}
+	if (marioPouchWork.attack > MAX_ATTACK) marioPouchWork.attack = MAX_ATTACK;
+	if (marioPouchWork.attack <= 0) marioPouchWork.attack = 1;
 	
-	void pouchAddAttack(s32 attackToAdd)
-	{
-		marioPouchWork.attack += attackToAdd;
-		
-		if (marioPouchWork.attack > MAX_ATTACK) marioPouchWork.attack = MAX_ATTACK;
-		if (marioPouchWork.attack <= 0) marioPouchWork.attack = 1;
-		
-		return;
-	}
+	return;
+}
+
+void pouchSetHp(s32 targetHp)
+{
+	marioPouchWork.hp = targetHp;
 	
+	if (targetHp > marioPouchWork.maxHp) marioPouchWork.hp = marioPouchWork.maxHp;
+	if (targetHp != 0) marioPouchWork.flipTimer = FLIP_TIMER_MAX;
+	
+	return;
+}
+
+void pouchAddHp(s32 hpToAdd)
+{
+	marioPouchWork.hp += hpToAdd;
+	
+	if (marioPouchWork.hp > marioPouchWork.maxHp) marioPouchWork.hp = marioPouchWork.maxHp;
+	if (hpToAdd != 0) marioPouchWork.flipTimer = FLIP_TIMER_MAX;
+	
+	return; 
+}
+
 }
