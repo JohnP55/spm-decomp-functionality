@@ -25,7 +25,7 @@ namespace spm::seqdrv
             if (now_seq != -1)
             {
                 system::sysWaitDrawSync();
-                ((void(*)(SeqWork*))seq_data[now_seq].exit)(&seqWork);
+                seq_data[now_seq].exit(&seqWork);
             }
 
             prev_seq = now_seq;
@@ -40,12 +40,12 @@ namespace spm::seqdrv
             
             seqWork.afterFunc = NULL;
             
-            ((void(*)())seq_data[next_seq].init)();
+            seq_data[next_seq].init(&seqWork);
         }
-        ((void(*)(SeqWork*))seq_data[now_seq].main)(&seqWork);
+        seq_data[now_seq].main(&seqWork);
         
         if (seqWork.afterFunc != NULL)
-            ((void(*)())seqWork.afterFunc)();
+            seqWork.afterFunc();
         
         return;
     }

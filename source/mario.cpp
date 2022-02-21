@@ -160,17 +160,6 @@ s32 getCrouchState()
 	return state;
 }
 
-void FUN_801428a4()
-{
-	MarioWork* marioWork = marioGetPtr();
-	FUN_80130c14();
-	marioWork->hitObjs2[0] = (HitObj*)0x0;
-
-	do {
-		((void(*)(MarioWork*))stateCodeStuff[marioWork->state * 2])(marioWork);
-	} while ((marioWork->trigFlags & 1) != 0);
-}
-
 u8 marioCtrlOffChk()
 {
 	return marioWork.ctrl;

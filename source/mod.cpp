@@ -5,6 +5,8 @@
 #include <wii/string.h>
 
 #include <spm/mario.h>
+#include <spm/mario_hit.h>
+#include <spm/mario_motion.h>
 #include <spm/system.h>
 #include <spm/mario_pouch.h>
 #include <spm/camdrv.h>
@@ -28,7 +30,6 @@ namespace mod {
 		writeBranch(spm::mario::calcSpeed_o, 0, spm::mario::calcSpeed);
 		writeBranch(spm::mario::getCrouchState_o, 0, spm::mario::getCrouchState);
 		writeBranch(spm::mario::isSuperJumpHitCeiling_o, 0, spm::mario::isSuperJumpHitCeiling);
-		writeBranch(spm::mario::FUN_801428a4_o, 0, spm::mario::FUN_801428a4);
 		writeBranch(spm::mario::marioCtrlOffChk_o, 0, spm::mario::marioCtrlOffChk);
 		writeBranch(spm::mario::marioKeyOffChk_o, 0, spm::mario::marioKeyOffChk);
 		writeBranch(spm::mario::marioCtrlOff_o, 0, spm::mario::marioCtrlOff);
@@ -57,6 +58,7 @@ namespace mod {
 		writeBranch(spm::seqdrv::seqSetSeq_o, 0, spm::seqdrv::seqSetSeq);
 		writeBranch(spm::seqdrv::seqMain_o, 0, spm::seqdrv::seqMain);
 		writeBranch(spm::seqdrv::seqInit_SPMARIO_o, 0, spm::seqdrv::seqInit_SPMARIO);
-		writeBranch(spm::seqdrv::seqInit_SPMARIO_o, 0, spm::seqdrv::seqInit_SPMARIO);
+
+		writeBranch(spm::mario_motion::marioMotion_o, 0, spm::mario_motion::marioMotion);
 	}
 }

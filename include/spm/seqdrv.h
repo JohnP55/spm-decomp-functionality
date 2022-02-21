@@ -10,21 +10,23 @@
 
 namespace spm::seqdrv {
 
-//typedef void (SeqFunc)(SeqWork *);
+typedef void (AfterFunc)();
 
 typedef struct {
 /* 0x00 */ s32 seq;
 /* 0x04 */ s32 stage; // number used by the seq_ functions to track their progress
 /* 0x08 */ char * next_map; // parameter for seq function, always map name?
 /* 0x0C */ char * next_bero; // paramater for seq function, always door name?
-/* 0x10 */ // unknown 0x10-1f
-/* 0x20 */ void* afterFunc; // ran after every call to the main SeqFunc if not null
+/* 0x10 */ u8 padding[0x20-0x10]; // unknown 0x10-1f
+/* 0x20 */ AfterFunc* afterFunc; // ran after every call to the main SeqFunc if not null
 } SeqWork; // total size 0x24
 
+typedef void (SeqFunc)(SeqWork *);
+
 typedef struct {
-/* 0x0 */ void * init;
-/* 0x4 */ void * main;
-/* 0x8 */ void * exit; // All of these are SeqFunc
+/* 0x0 */ SeqFunc * init;
+/* 0x4 */ SeqFunc * main;
+/* 0x8 */ SeqFunc * exit; // All of these are SeqFunc
 } SeqDef; // total size 0xc
 
 enum {

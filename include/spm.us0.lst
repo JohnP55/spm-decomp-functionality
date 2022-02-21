@@ -238,9 +238,9 @@
 80172c60:isSuperJumpHitCeiling_o
 8012ad08:getGravityDotProduct
 8019b7a8:reviseAngle_o
-801428a4:FUN_801428a4_o
-80130c14:FUN_80130c14
-803e71d8:stateCodeStuff
+801428a4:marioMotion_o
+80130c14:clear_hitObj_9
+803e71d8:marioMotTbl
 8012210c:marioCtrlOffChk_o
 80122120:marioKeyOffChk_o
 80122134:marioCtrlOff_o

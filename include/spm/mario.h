@@ -255,7 +255,6 @@ float getMaxSpeed();
 float calcSpeed(double initSpeed, bool scaleSpeed);
 s32 getCrouchState();
 s32 isSuperJumpHitCeiling();
-void FUN_801428a4();
 
 u8 marioCtrlOffChk();
 u8 marioKeyOffChk();
@@ -292,10 +291,5 @@ extern "C" {
 	extern s32 getCrouchState_o();
 	extern s32 isSuperJumpHitCeiling_o();
 	extern void getGravityDotProduct(wii::Vec3* position, wii::Vec3* dest);
-
-	extern void FUN_801428a4_o();
-	extern void FUN_80130c14();
-
-	extern void* stateCodeStuff[156];
 }
 }
