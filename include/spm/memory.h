@@ -30,6 +30,18 @@ struct HeapSize
     s32 size;
 };
 
+enum HeapId {
+    MAIN_HEAP,
+    MAP_HEAP,
+    MEM1_HEAP_3,
+    EXT_HEAP,
+    EFFECT_HEAP,
+    WPAD_HEAP,
+    SOUND_HEAP,
+    SMART_HEAP,
+    MEM2_HEAP_6
+};
+
 extern "C" {
 
 extern MemWork * memoryWp;

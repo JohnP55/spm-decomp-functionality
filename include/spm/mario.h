@@ -1,7 +1,6 @@
 #pragma once
 #include "spm/hitdrv.h"
 
-#include <types.h>
 #include <wii/types.h>
 
 namespace spm::mario {
@@ -173,10 +172,10 @@ struct MarioWork
 	float facingAngle;
 	float targetFacingAngle;
 	u8 unknown_0x188[0x194 - 0x188];
-	float scaledHitboxWidth;
-	float scaledHitboxHeight;
 	float hitboxWidth;
 	float hitboxHeight;
+	float baseHitboxWidth;
+	float baseHitboxHeight;
 	u8 unknown_0x1a4[0x1b4 - 0x1a4];
 	float targetMovingAngle;
 	u8 unknown_0x1b8[0x1bc - 0x1b8];
@@ -194,7 +193,9 @@ struct MarioWork
 	u8 unknown_0x314[0x316 - 0x314];
 	u8 pseudoJoystickX;
 	u8 pseudoJoystickY;
-	u8 unknown_0x318[0x364 - 0x318];
+	u8 unknown_0x318[0x348 - 0x318];
+	s32 sfxIds[4];
+	u8 unknown_0x358[0x364 - 0x358];
 	float idleTimer;
 	u8 unknown_0x368[0x3a4 - 0x368];
 	void* caughtEnemy;
@@ -263,6 +264,8 @@ u8 marioCtrlOn();
 u8 marioKeyOff();
 u8 marioKeyOn();
 
+void marioSoundInit();
+
 extern "C" {
 
 	extern CharacterProperty characterProperties[4];
@@ -291,5 +294,7 @@ extern "C" {
 	extern s32 getCrouchState_o();
 	extern s32 isSuperJumpHitCeiling_o();
 	extern void getGravityDotProduct(wii::Vec3* position, wii::Vec3* dest);
+
+	extern void marioSoundInit_o();
 }
 }

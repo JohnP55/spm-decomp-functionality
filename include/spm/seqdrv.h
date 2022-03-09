@@ -15,8 +15,8 @@ typedef void (AfterFunc)();
 typedef struct {
 /* 0x00 */ s32 seq;
 /* 0x04 */ s32 stage; // number used by the seq_ functions to track their progress
-/* 0x08 */ char * next_map; // parameter for seq function, always map name?
-/* 0x0C */ char * next_bero; // paramater for seq function, always door name?
+/* 0x08 */ char * nextMap; // parameter for seq function, always map name?
+/* 0x0C */ char * nextBero; // paramater for seq function, always door name?
 /* 0x10 */ u8 padding[0x20-0x10]; // unknown 0x10-1f
 /* 0x20 */ AfterFunc* afterFunc; // ran after every call to the main SeqFunc if not null
 } SeqWork; // total size 0x24
@@ -37,7 +37,7 @@ enum {
     SEQ_MAPCHANGE = 3,
     SEQ_GAMEOVER = 4,
     SEQ_LOAD = 5
-};
+} Seqs;
 
 /*
     Returns now_seq or 0 if equal to -1
@@ -49,7 +49,7 @@ void seqMain();
 
 extern "C" {
 
-extern SeqDef seq_data[6]; // 804287a8 - index is enum above, SEQ_NONE doesn't have an entry
+extern SeqDef seq_data[sizeof(Seqs)]; // 804287a8 - index is enum above, SEQ_NONE doesn't have an entry
 extern SeqWork seqWork; // 80512360
 
 extern s32 now_seq;

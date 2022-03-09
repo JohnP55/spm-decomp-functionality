@@ -6,11 +6,14 @@ namespace spm::seqdrv
 {
     s32 seqGetSeq()
     {
-        return now_seq;
+        return now_seq == -1 ? 0 : now_seq;
     }
     void seqInit_SPMARIO()
     {
         memset(&seqWork, 0, sizeof(SeqWork));
+        now_seq = -1;
+        next_seq = -1;
+        prev_seq = -1;
     }
     void seqSetSeq(s32 seqNum, char * map, char * bero)
     {
@@ -35,8 +38,8 @@ namespace spm::seqdrv
             seqWork.seq = next_seq;
             seqWork.stage = 0;
             
-            seqWork.next_map = next_map;
-            seqWork.next_bero = next_bero;
+            seqWork.nextMap = next_map;
+            seqWork.nextBero = next_bero;
             
             seqWork.afterFunc = NULL;
             

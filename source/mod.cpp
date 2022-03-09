@@ -11,6 +11,7 @@
 #include <spm/mario_pouch.h>
 #include <spm/camdrv.h>
 #include <spm/seqdrv.h>
+#include <spm/npcdrv.h>
 
 namespace mod {
 
@@ -36,6 +37,7 @@ namespace mod {
 		writeBranch(spm::mario::marioCtrlOn_o, 0, spm::mario::marioCtrlOn);
 		writeBranch(spm::mario::marioKeyOff_o, 0, spm::mario::marioKeyOff);
 		writeBranch(spm::mario::marioKeyOn_o, 0, spm::mario::marioKeyOn);
+		writeBranch(spm::mario::marioSoundInit_o, 0, spm::mario::marioSoundInit);
 		
 		writeBranch(spm::mario_pouch::pouchGetPtr_o, 0, spm::mario_pouch::pouchGetPtr);
 		writeBranch(spm::mario_pouch::pouchGetTotalCoinsCollected_o, 0, spm::mario_pouch::pouchGetTotalCoinsCollected);
@@ -49,6 +51,7 @@ namespace mod {
 		writeBranch(spm::system::getSpmarioDVDRoot_o, 0, spm::system::getSpmarioDVDRoot);
 		writeBranch(spm::system::compAngle_o, 0, spm::system::compAngle);
 		writeBranch(spm::system::reviseAngle_o, 0, spm::system::reviseAngle);
+		writeBranch(spm::system::angleABf_o, 0, spm::system::angleABf);
 		writeBranch(spm::system::distABf_o, 0, spm::system::distABf);
 		writeBranch(spm::system::rand_o, 0, spm::system::rand);
 		writeBranch(spm::system::irand_o, 0, spm::system::irand);
@@ -60,5 +63,9 @@ namespace mod {
 		writeBranch(spm::seqdrv::seqInit_SPMARIO_o, 0, spm::seqdrv::seqInit_SPMARIO);
 
 		writeBranch(spm::mario_motion::marioMotion_o, 0, spm::mario_motion::marioMotion);
+
+		writeBranch(spm::npcdrv::npcInit_o, 0, spm::npcdrv::npcInit);
+		writeBranch(spm::npcdrv::npcReset_o, 0, spm::npcdrv::npcReset);
+		writeBranch(spm::npcdrv::npcWorkSetFlag2_o, 0, spm::npcdrv::npcWorkSetFlag2);
 	}
 }

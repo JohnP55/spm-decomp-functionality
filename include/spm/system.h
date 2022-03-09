@@ -16,6 +16,7 @@ float frand(float maxValue);
 float compAngle(float angle1, float angle2);
 float distABf(float x1, float y1, float x2, float y2);
 float reviseAngle(float angle);
+float angleABf(float x1, float y1, float x2, float y2);
 
 extern "C" {
 
@@ -34,8 +35,11 @@ extern s32 irand_o(s32 maxValue);
 extern float frand_o(float maxValue);
 extern float compAngle_o(float angle1, float angle2);
 extern float distABf_o(float x1, float y1, float x2, float y2);
+extern float angleABf_o(float x1, float y1, float x2, float y2);
 extern float reviseAngle_o(float angle);
 extern void sysWaitDrawSync();
+
+extern float angleABTbl_o[91];
 
 extern u32 RNG_SEED;
 }

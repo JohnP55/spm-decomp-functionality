@@ -5,6 +5,7 @@
 80004000:memcpy
 80004104:memset
 800293C4:mapDataPtr
+803c0868:mapDataPtrList
 803C3B98:mapDataList
 8002C7CC:mobjNameToPtrNoAssert
 800325F0:msgSearch
@@ -254,3 +255,12 @@
 8056d93c:next_bero
 8019c62c:sysWaitDrawSync
 803e8bf0:healthAndSafetyTpls
+8012280c:marioSoundInit_o
+803fc290:npcTribes
+80409be8:npcEnemyTemplates
+8056d1a8:npcdrvWp
+801a895c:npcInit_o
+801a8a18:npcReset_o
+801a8ac4:npcWorkSetFlag2_o
+8019b874:angleABf_o
+// 803ea770:angleABTbl (now copied data)

@@ -71,18 +71,18 @@ void marioSpawnPlayer()
 		marioWork.unkScale.z = Vec3_8033086c.z;
 	}
 
+	marioWork.baseHitboxWidth = hWidth;
+	marioWork.baseHitboxHeight = hHeight;
 	marioWork.hitboxWidth = hWidth;
 	marioWork.hitboxHeight = hHeight;
-	marioWork.scaledHitboxWidth = hWidth;
-	marioWork.scaledHitboxHeight = hHeight;
 
 	marioWork.initSpeed = initSpeed;
 	marioWork.maxSpeed = maxSpeed;
 	marioWork.swimmingSpeed = swimmingSpeed;
 	
 	if ((marioWork.flags & 0x2000000) != 0) {
-		marioWork.scaledHitboxWidth = marioWork.hitboxWidth * 0.4;
-		marioWork.scaledHitboxHeight = marioWork.hitboxHeight * 0.4;
+		marioWork.hitboxWidth = marioWork.baseHitboxWidth * 0.4;
+		marioWork.hitboxHeight = marioWork.baseHitboxHeight * 0.4;
 	}
 
 	FUN_8013146c();
@@ -200,6 +200,15 @@ u8 marioKeyOn()
 	if (marioWork.keyOff == 0)
 		marioWork.flags &= 0xfffffff7;
 	return marioWork.keyOff;
+}
+
+void marioSoundInit()
+{
+	marioWork.sfxIds[0] = -1;
+	marioWork.sfxIds[1] = -1;
+	marioWork.sfxIds[2] = -1;
+	marioWork.sfxIds[3] = -1;
+	return;
 }
 
 }

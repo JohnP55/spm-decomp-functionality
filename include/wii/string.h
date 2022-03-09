@@ -2,6 +2,8 @@
 
 #include <types.h>
 
+extern "C" {
+
 void * memcpy(void * dest, const void * src, u32 n);
 void * memset(void * ptr, int value, u32 n);
 void * memmove(void * dest, const void * src, u32 n);
@@ -12,3 +14,5 @@ s32 sscanf(const char * s, const char * format, ...);
 size_t strlen(const char * str);
 
 // more
+
+}
